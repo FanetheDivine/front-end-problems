@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <div class="btn">间隙无法点击背景</div>
+        <div class="btn">间隙无法点击背景</div>
+    </div>
+    <div class="container can-click">
+        <div class="btn">间隙可以点击背景</div>
+        <div class="btn">间隙可以点击背景</div>
+    </div>
+    <style>
+        .background{
+            position: fixed;
+            inset:0;
+            cursor: pointer;
+        }
+        .container{
+            border: 1px solid black;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            display:flex;
+            flex-direction: column;
+        }
+        .btn{
+            flex:1;
+            background-color: red;
+            cursor:cell;
+            border: inherit;
+            margin:20px;
+        }
+        .can-click{
+            top:500px;
+            overflow: visible;
+            height: 0;
+        }
+    </style>
+</body>
+</html>
