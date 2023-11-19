@@ -4,7 +4,7 @@ export {
 }
 
 /**
- * 将video元素当前的画面保存为base64数据
+ * video元素截图并保存为base64数据
  * @param video video元素
  * @returns base64数据
  */
@@ -18,7 +18,7 @@ function getVideoScreenshot(video:HTMLVideoElement){
 }
 
 /**
- * 录制指定时长并取得结果的Promise
+ * 录制video元素指定时长并取得结果的Promise
  * @param video video元素
  * @param period 录制时长(毫秒)
  * @returns Promise的值为指向录制结果的临时URL  
@@ -27,7 +27,7 @@ function getVideoScreenshot(video:HTMLVideoElement){
 function recordVideo(video:HTMLVideoElement,period:number):Promise<string>;
 
 /**
- * 录制直到调用**录制控制函数**(*此函数的返回值*)  
+ * 录制video元素直到调用**录制控制函数**(*此函数的返回值*)  
  * 如果录制中有异常,立刻终止录制并参数`handler`  
  * 此后调用**录制控制函数** 会抛出异常
  * @param video video元素
