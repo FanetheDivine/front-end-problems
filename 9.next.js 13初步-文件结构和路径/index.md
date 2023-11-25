@@ -27,7 +27,6 @@ next.js项目app目录及其下的每个文件夹都代表一个路径
 `Layout`和`Template`不是必须的,但只有`Page`的存在才能让next认为当前路径是一个页面 
 对于`/[id]?name=1`  访问参数的方式如下
 ``` ts
-import { FC } from "react"
 type Props = {
     params:{//路径参数
         id:string
@@ -36,7 +35,7 @@ type Props = {
         name?:string
     }
 }
-const Test:FC<Props> = (props)=>{
+export default function Test(props:Props){
     const id = props.params.id
     const name = props.searchParams.name
     return (
@@ -47,7 +46,7 @@ const Test:FC<Props> = (props)=>{
     )
 }
 ```
-对于服务端组件,还有更好的方式可供选择
+对于客户端组件,还有更好的方式可供选择
 ``` ts
 'use client'
 import {useParams,useSearchParams} from "next/navigation";
@@ -55,7 +54,7 @@ import {useParams,useSearchParams} from "next/navigation";
 type Params = {
     id:string//只能是string或者string[]
 }
-const Test:FC = ()=>{
+export default function Test(){
     const { id } = useParams<Params>()//路径参数
     const query = useSearchParams()//查询参数
     return (
@@ -151,6 +150,9 @@ await fetch(`${pathname}/test1`)
 ```
 这个也是客户端组件专享
 服务端组件必须写出完整的路径名 或者从`app/api/`获取内容
+# 父级路径参数
+对于`/[id]/[name]`路径 `/[id]`这一级的`layout.tsx`和`template.tsx`接受的路径参数只有`id`   
+下级的所有组件都可以接受`id`和`name`
 # 客户端组件的传染性
 客户端组件包含的所有组件都是客户端组件  
 客户端组件无法通过元数据(`Metadata`)指定标题等内容
