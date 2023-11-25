@@ -124,7 +124,9 @@ import { useRouter } from "next/navigation";
 const router = useRouter()
 router.push('/123?name=1')//只能通过这种方式携带参数
 ```
-`router.push`接受绝对路径
+`router.push`接受绝对路径  
+查询参数的改变不会触发浏览器重新请求 可以用`useEffect`监听
+路径参数会触发浏览的重新请求 无法监听
 ## 刷新、前进和回退
 ``` ts
 'use client'
@@ -145,7 +147,7 @@ router.back()//回退
 'use client'
 import { usePathname } from "next/navigation";
 
-const pathname = usePathname()
+const pathname = usePathname()//不包含查询参数
 await fetch(`${pathname}/test1`)
 ```
 这个也是客户端组件专享
