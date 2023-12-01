@@ -11,7 +11,8 @@ next.js项目app目录及其下的每个文件夹都代表一个路径
 `not-found`仅在app目录下生效 表示未找到的页面   
 `error` 表示出错的页面
 ## `loading.tsx`
-在真正的页面加载时,显示`<Loading></Loading>`
+布局中的内容加载时,显示`<Loading></Loading>`   
+如果需要对页面的某个区域显示loading 则应使用Suspense组件
 ## `layout.tsx` / `template.tsx` / `page.tsx`
 不考虑`not-found.tsx`、`error.tsx`等时 next按照下面的方式组织页面  
 ``` html
