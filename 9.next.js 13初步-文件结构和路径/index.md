@@ -70,7 +70,8 @@ export default function Test(){
 ## `route.ts`
 如果此文件存在,那么当前路径不被视为一个页面  
 `page.tsx`不生效 但`layout.tsx`和`template.tsx`仍然对子路径生效  
-对于路径为`/[id]?name=1` body为`{data:{name:string}}`的POST请求,在route.ts中定义POST函数接受参数
+对于路径为`/[id]?name=1` body为`{data:{name:string}}`的POST请求,在route.ts中定义POST函数接受参数  
+值得注意的是 请求体和查询是可能*不存在*的   
 ``` ts
 import { NextRequest } from "next/server"
 
@@ -80,16 +81,14 @@ type Params={
     }
 }
 
-type Body = {
-    data:{
-        name:string
-    }
+type Body = undefined | {
+        name?:string
 }
 
 export async function POST(req: NextRequest,{params}:Params){
-    const id = req.nextUrl.searchParams.get('id')//接受路径参数
-    const data:Body = await req.json()//接受请求体
-    const name = params.name//接受查询参数
+    const id = req.nextUrl.searchParams.get('id')//接受查询参数 使用这种方式要求开发者检测是否存在
+    const data:Body = await req.json()//接受请求体 它可能是不存在的
+    const name = params.name//接受路径参数 路径参数一定是存在的且类型为字符串
     return Response.json({
         id,
         data,
