@@ -19,7 +19,10 @@ Test.prototype.fun// 用作可以生成Test类型实例的对象
 typeof Test// 类类型
 ```
 第二种用法就是typescrpit中的`类类型`
-也可从类类型中得到它的实例的类型
+也可从类类型中得到它的实例的类型  
+但需要注意的是
 ```ts
 type Test = InstanceType<typeof Test>
 ```
+# 说明
+如果一个类通过`import type`导入 那么它不能当作类类型使用
