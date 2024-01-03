@@ -1,5 +1,5 @@
 # 版本说明
-基于next.js 13 app目录模式和 typescript 5.2以上版本
+基于next.js 14 app目录模式和 typescript 5.2以上版本
 # 组件类型
 next.js中组件分为客户端组件和服务端组件,两者的名称不能完全反应它们的渲染时机  
 ## 服务端组件
