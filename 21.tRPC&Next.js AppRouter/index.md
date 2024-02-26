@@ -103,5 +103,7 @@ export const trpc = createTRPCReact<typeof TRPC>()
 ```ts
 import { trpc } from '@/utils/trpc'
 
+// 这里的example就是@/lib/trpc/index.ts里的example
+// 鼠标悬浮可以查看tsdoc注释 还可以直接跳转至@/lib/trpc/index.ts
 trpc.example.useQuery({ message: 'trpc example' })
 ```
