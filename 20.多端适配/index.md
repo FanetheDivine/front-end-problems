@@ -3,6 +3,7 @@
 # 解决
 * 读取UA判断设备类型,静态多端适配
 * 读取视窗宽度,动态多端适配。一般以786px作为移动端和电脑的分界线。一般使用useMediaQuery。
+* ahooks库的`useResponsive`钩子可以获取宽度
 # Next项目代码示例
 可以使用createServerContext(暂时未开放)
 ```ts
