@@ -30,7 +30,7 @@ export async function serverAction(){
 }
 ```
 这些函数必须被声明为`async` 它们严格地运行在服务端  
-它的本质是next包装过的表单action(POST请求) 因此可以用在任何fetch也可以使用的位置(客户端组件的组件体就不行)  
+它的本质是next包装过的表单action(POST请求) 因此可以用在任何可以发起网络请求的位置 
 可以通过server action统一前后端的数据格式  
 `server action`进行重定向时会改变浏览器url(因为底层由表单实现)   
 ## 注意
